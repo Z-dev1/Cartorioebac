@@ -85,6 +85,7 @@
 	}
  	
  	system("pause");
+ 	fclose(file);
  }
  
  int deletar()
@@ -112,51 +113,76 @@
  	
  	int opcao=0; //definindo as variáveis
  	int x=1;
- 	
- 	for (x=1; x=1;)
- 	{
-	 
-		system("cls");//limpar tela	 
- 	
-	 	setlocale(LC_ALL, "portuguese"); //definindo a linguagem
-	 	
-	 	printf(" ### cartório da EBAC ###\n\n"); //inicio do menu
-	 	printf("Escolha a opção desejada no menu:\n\n");
-	 	printf("\t1 - Registrar nomes\n");
-	 	printf("\t2 - Consultar nomes\n");
-	 	printf("\t3 - Deletar nomes\n\n"); 
-	 	printf("\t4 - Sair do programa\n\n");
-		printf("opção:");// fim do menu
-	 	
-	 	scanf ("%d", &opcao);//armazenando a escolha do usuário
-	 	
-	 	system("cls");
-	 	
-	 	switch(opcao)
-	 	{
-	 		case 1:
-	 		registro();//chamada de função
-			break;
-			
-			case 2:
-			consultar();
-			break;
-			
-			case 3:
-			deletar();
-			break;
-			
-			case 4:
-				printf("Até logo! \n\n");
-			return 0;
-			break;
-			
-			default:
-				printf("essa opção não está disponível!\n");
-			system("pause");
-			break;
-				
+	char senhadigitada[10] = "a";
+	int comparacao;
+	
+		printf(" ### cartório da EBAC ###\n\n");
+	while(1)//inicio do loop
+	{
+		system("cls");
+		printf("Login de admnistrador!\n\nDigite a sua senha:");
+		scanf("%s", senhadigitada);
+		
+		comparacao = strcmp(senhadigitada, "admin");
+	
+		if(comparacao == 0)	
+		{
+			printf("Acesso permitido!\n");
+			break;	
 		}
+ 			else// se não acertar retorna um valor diferente de 0 e o loop continuara
+ 			system("cls");
+ 		{
+ 			printf("Senha incorreta, tente novamente!\n\n");
+ 			system("pause");
+		}
+    } // final do loop
+    
+	 		while(1)//inicio loop menu
+	 		{
+			
+			system("cls");//limpar tela	 
 	 	
-    }
+		 	setlocale(LC_ALL, "portuguese"); //definindo a linguagem
+		 	
+		 	printf(" ### cartório da EBAC ###\n\n"); //inicio do menu
+		 	printf("Escolha a opção desejada no menu:\n\n");
+		 	printf("\t1 - Registrar nomes\n");
+		 	printf("\t2 - Consultar nomes\n");
+		 	printf("\t3 - Deletar nomes\n\n"); 
+		 	printf("\t4 - Sair do programa\n\n");
+			printf("opção:");// fim do menu
+		 	
+		 	scanf ("%d", &opcao);//armazenando a escolha do usuário
+		 	
+		 	system("cls");
+		 	
+		 	switch(opcao)
+		 	{
+		 		case 1:
+		 		registro();//chamada de função
+				break;
+				
+				case 2:
+				consultar();
+				break;
+				
+				case 3:
+				deletar();
+				break;
+				
+				case 4:
+					printf("Até logo! \n\n");
+				return 0;
+				break;
+				
+				default:
+					printf("essa opção não está disponível!\n");
+				system("pause");
+				break;
+					
+				}//final switch
+		 	}//final do loop menu
+    return 0;
+
  } 
